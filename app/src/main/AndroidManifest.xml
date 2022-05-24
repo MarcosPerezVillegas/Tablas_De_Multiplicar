@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TablasDeMultiplicar">
         <activity
+            android:name=".activity_respuesta"
+            android:exported="false" />
+        <activity
             android:name=".PracticarActivity"
             android:exported="false" />
         <activity

@@ -17,6 +17,7 @@ class PracticarActivity : AppCompatActivity() {
     var factor1: Int = 0
     var factor2: Int = 0
     var respuesta: Int = 0
+    var respuestaCorrecta= false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_practicar)
@@ -29,12 +30,17 @@ class PracticarActivity : AppCompatActivity() {
             }
             else{
                 if (respuesta==strRespuesta.toInt()){
+                    respuestaCorrecta=true
                     Toast.makeText(this, "Ta bien", Toast.LENGTH_SHORT).show()
+                    trespuesta.text.clear()
                 }
                 else{
+                    respuestaCorrecta=false
                     Toast.makeText(this, "Vales pi##", Toast.LENGTH_SHORT).show()
                 }
-                initUI()
+                val mostrarResultado= Intent(this,activity_respuesta::class.java)
+                mostrarResultado.putExtra("respuesta",respuestaCorrecta)
+                startActivity(mostrarResultado)
             }
         }
     }
@@ -47,7 +53,7 @@ class PracticarActivity : AppCompatActivity() {
         multi()
         tfactor1.text = "$factor1"
         tfactor2.text = "$factor2"
-        trespuesta.text.clear()
+
     }
     fun multi(){
         factor1 = Random.nextInt(0,10)
